@@ -273,6 +273,7 @@ Copyright © 2017 Francisco Lopes da Silva
 
 ## ubuntu install
 
+```
 apt install -y cmake git libyaml-cpp-dev libevdev-dev libudev-dev build-essential
 git clone https://gitlab.com/interception/linux/tools.git
 cd tools
@@ -281,11 +282,18 @@ cd build
 cmake ..
 make
 sudo mv udevmon uinput intercept /usr/local/bin
+```
 
-intercept -g /dev/input/by-id/usb-CATEX_TECH._GK868B_CA2019020001-event-kbd | ./space | uinput -d /dev/input/by-id/usb-CATEX_TECH._GK868B_CA2019020001-event-kbd
+## systemd
 
+```
+core64# cat /etc/systemd/system/udevmon.service
+[Unit]
+Description=udevmon
 
-def hello(asjdflsaf)
-def hello():
-print 9
-print 9
+[Service]
+ExecStart=/usr/bin/nice -n -20 udevmon -c /etc/udevmon.yaml
+
+[Install]
+WantedBy=multi-user.target
+```
