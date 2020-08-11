@@ -39,19 +39,18 @@ void space_to_shift(const struct input_event input) {
     if (!does_keyboard_changes(input)) {
         return;
     }
-
     write_event(&input);
-    if (input.value != 0) {
+
+    if (input.value == 1) {
         PREV_CODE = input.code;
     }
 
-    if (input.code == KEY_RIGHTALT && input.value == 0) {
-        if (PREV_CODE == KEY_RIGHTALT) {
-            write_event(&SHIFT_DOWN);
-            write_event(&SPACE_DOWN);
-            write_event(&SPACE_UP);
-            write_event(&SHIFT_UP);
-        }
+    if (PREV_CODE == KEY_RIGHTALT && input.code == KEY_RIGHTALT &&
+        input.value == 0) {
+        write_event(&SHIFT_DOWN);
+        write_event(&SPACE_DOWN);
+        write_event(&SPACE_UP);
+        write_event(&SHIFT_UP);
     }
 }
 
