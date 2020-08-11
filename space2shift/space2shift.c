@@ -6,12 +6,12 @@
 
 // clang-format off
 const struct input_event
-shift_up       = {.type = EV_KEY, .code = KEY_LEFTSHIFT, .value = 0},
-shift_down     = {.type = EV_KEY, .code = KEY_LEFTSHIFT, .value = 1},
-space_down     = {.type = EV_KEY, .code = KEY_SPACE,    .value = 1};
+SHIFT_UP       = {.type = EV_KEY, .code = KEY_LEFTSHIFT, .value = 0},
+SHIFT_DOWN     = {.type = EV_KEY, .code = KEY_LEFTSHIFT, .value = 1},
+SPACE_DOWN     = {.type = EV_KEY, .code = KEY_SPACE,    .value = 1};
 // clang-format on
 
-__s32 prevCode;
+__s32 PREV_CODE;
 
 int read_event(struct input_event *event) {
     return fread(event, sizeof(struct input_event), 1, stdin) == 1;
@@ -36,7 +36,7 @@ int does_keyboard_changes(const struct input_event event) {
 
 int is_input_key_space(const struct input_event input) {
     if (input.value != 0) {
-        prevCode = input.code;
+        PREV_CODE = input.code;
     }
 
     if (input.code == KEY_SPACE) {
@@ -56,13 +56,13 @@ void space_to_shift(const struct input_event input) {
     }
 
     if (input.value == 1) {
-        write_event(&shift_down);
+        write_event(&SHIFT_DOWN);
     }
     if (input.value == 0) {
-        write_event(&shift_up);
+        write_event(&SHIFT_UP);
 
-        if (prevCode == KEY_SPACE) {
-            write_event(&space_down);
+        if (PREV_CODE == KEY_SPACE) {
+            write_event(&SPACE_DOWN);
             write_event(&input);  // space_up
         }
     }
