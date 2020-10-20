@@ -6,10 +6,10 @@
 
 // clang-format off
 const struct input_event
-SHIFT_UP       = {.type = EV_KEY, .code = KEY_LEFTSHIFT, .value = 0},
-SHIFT_DOWN     = {.type = EV_KEY, .code = KEY_LEFTSHIFT, .value = 1},
-SPACE_UP       = {.type = EV_KEY, .code = KEY_SPACE,    .value = 0},
-SPACE_DOWN     = {.type = EV_KEY, .code = KEY_SPACE,    .value = 1};
+CTRL_UP    = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 0},
+CTRL_DOWN  = {.type = EV_KEY, .code = KEY_LEFTCTRL, .value = 1},
+SPACE_UP   = {.type = EV_KEY, .code = KEY_SPACE,    .value = 0},
+SPACE_DOWN = {.type = EV_KEY, .code = KEY_SPACE,    .value = 1};
 // clang-format on
 
 __s32 PREV_CODE;
@@ -45,12 +45,12 @@ void space_to_shift(const struct input_event input) {
         PREV_CODE = input.code;
     }
 
-    if (PREV_CODE == KEY_RIGHTALT && input.code == KEY_RIGHTALT &&
+    if (PREV_CODE == KEY_RIGHTMETA && input.code == KEY_RIGHTMETA &&
         input.value == 0) {
-        write_event(&SHIFT_DOWN);
+        write_event(&CTRL_DOWN);
         write_event(&SPACE_DOWN);
         write_event(&SPACE_UP);
-        write_event(&SHIFT_UP);
+        write_event(&CTRL_UP);
     }
 }
 
