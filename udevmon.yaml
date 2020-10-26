@@ -1,0 +1,5 @@
+- JOB: "intercept -g /dev/input/by-id/usb-CATEX_TECH._GK868B_CA2019020001-event-kbd | space2shift | jklsemicolon2arrow  | rightmeta2ctrlspace | esc2enkbd | uinput -d /dev/input/by-id/usb-CATEX_TECH._GK868B_CA2019020001-event-kbd"
+  DEVICE:
+    EVENTS:
+      EV_KEY: [KEY_SPACE, KEY_LEFTSHIFT, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, ]
+
