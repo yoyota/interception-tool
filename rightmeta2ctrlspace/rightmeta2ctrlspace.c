@@ -35,7 +35,7 @@ int does_keyboard_changes(const struct input_event event) {
     return 0;
 }
 
-void space_to_shift(const struct input_event input) {
+void rightmeta_to_ctrl_space(const struct input_event input) {
     if (!does_keyboard_changes(input)) {
         return;
     }
@@ -59,6 +59,6 @@ int main(void) {
     setbuf(stdin, NULL), setbuf(stdout, NULL);
 
     while (read_event(&input)) {
-        space_to_shift(input);
+        rightmeta_to_ctrl_space(input);
     }
 }
