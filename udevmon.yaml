@@ -1,5 +1,16 @@
+# usb external keyboard
 - JOB: "intercept -g /dev/input/by-id/usb-CATEX_TECH._GK868B_CA2019020001-event-kbd | space2shift | jklsemicolon2arrow  | rightmeta2ctrlspace | esc2enkbd | uinput -d /dev/input/by-id/usb-CATEX_TECH._GK868B_CA2019020001-event-kbd"
   DEVICE:
     EVENTS:
       EV_KEY: [KEY_SPACE, KEY_LEFTSHIFT, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, ]
+# bluetooth keyboard
+- JOB: "intercept -g /dev/input/event18 | space2shift | jklsemicolon2arrow  | rightmeta2ctrlspace | esc2enkbd | uinput -d /dev/input/event18"
+  DEVICE:
+    EVENTS:
+      EV_KEY: [KEY_SPACE, KEY_LEFTSHIFT, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, ]
 
+# labtop keyboard
+- JOB: "intercept -g /dev/input/event2 | rightctrl2rightmeta | caps2ctrl | space2shift | jklsemicolon2arrow  | rightmeta2ctrlspace | esc2enkbd | uinput -d /dev/input/event2"
+  DEVICE:
+    EVENTS:
+      EV_KEY: [KEY_SPACE, KEY_LEFTSHIFT, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, ]
