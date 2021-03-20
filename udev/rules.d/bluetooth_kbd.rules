@@ -1,0 +1,5 @@
+# /etc/udev/rules.d/bluetooth_kbd.rules
+# udevadm info --attribute-walk /dev/input/event14
+# sudo udevadm trigger
+
+ACTION=="add|change", SUBSYSTEM=="input", ATTRS{name}=="Bluetooth Keyboard", SYMLINK+="/input/by-id/gk868b-$attr{name}"

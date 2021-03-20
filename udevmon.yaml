@@ -4,7 +4,7 @@
     EVENTS:
       EV_KEY: [KEY_SPACE, KEY_LEFTSHIFT, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, ]
 # bluetooth keyboard
-- JOB: "intercept -g /dev/input/event18 | space2shift | jklsemicolon2arrow  | rightmeta2ctrlspace | esc2enkbd | uinput -d /dev/input/event18"
+- JOB: "intercept -g /dev/input/by-id/gk868b-Bluetooth_Keyboard | space2shift | jklsemicolon2arrow  | rightmeta2ctrlspace | esc2enkbd | uinput -d /dev/input/by-id/gk868b-Bluetooth_Keyboard"
   DEVICE:
     EVENTS:
       EV_KEY: [KEY_SPACE, KEY_LEFTSHIFT, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON, ]
